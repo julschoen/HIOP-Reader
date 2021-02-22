@@ -1,0 +1,18 @@
+*.class
+
+# Package Files #
+.idea
+*.war
+*.ear
+/bin/
+.DS_Store
+build
+dist
+docs
+Benutzerhandbuch.pdf
+*.spec
+PyInstaller Command.txt
+setup.py
+Setup Guide Docs.txt
+venv
+__pycache__
