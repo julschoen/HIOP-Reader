@@ -24,4 +24,4 @@ Currently, only MacOS is supported. The program can be used by running [TBD](). 
 * Julian Schön (julianschoen@gmx.de)
 
 ## License
-TBD
+Published under [GNU General Public License](License.md)
