@@ -5,7 +5,7 @@ Program developed for the Universitätsklinik Würzburg to convert hand written 
 Best results can be achieved by scanning the entire image and ensuring that nothing is blocked or
 cut off.
 
-#Technologies
+# Technologies
 * Python 3.7.9
 * Tensorflow 2.3
 * Tesseract 4.1.1
