@@ -1,5 +1,5 @@
-# Glaukoma Reader
-GUI reader developed for the Universitätsklinik Würzburg to convert hand written glaukoma graphs
+# HIOP-Reader
+Program developed for the Universitätsklinik Würzburg to convert hand written intraocular pressure graphs
 (Tagesdruckkurven) to csv. The program depends on the specific form used by German Universitätskliniken.
 
 Best results can be achieved by scanning the entire image and ensuring that nothing is blocked or
@@ -21,7 +21,7 @@ Currently, only MacOS is supported. The program can be used by running [TBD](). 
 
 ## Authors
 
-* Julian Schön
+* Julian Schön (julianschoen@gmx.de)
 
 ## License
 TBD
