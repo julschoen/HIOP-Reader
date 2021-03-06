@@ -115,7 +115,7 @@ class UiMainWindow(object):
         :param main_window: main window of the GUI
         """
         _translate = QtCore.QCoreApplication.translate
-        main_window.setWindowTitle(_translate("mainWindow", "Glaukoma Reader"))
+        main_window.setWindowTitle(_translate("mainWindow", "HIOP-Reader"))
         self.openBtn.setText(_translate("mainWindow", "Open File"))
         self.openFolderBtn.setText(_translate("mainWindow", "Open Folder"))
         self.saveBtn.setText(_translate("mainWindow", "Save File"))
