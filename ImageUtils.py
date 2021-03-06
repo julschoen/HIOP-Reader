@@ -363,15 +363,15 @@ class ImageUtils:
                 time_lines.append((x1, y1, x2, y2))
 
         # Add Times
-        new_time_lines = []
+        final_time_lines = []
         date = 0
         times = [6, 8, 11, 14, 17, 21, 24]
         for i in range(len(time_lines)):
             if i % 7 == 0:
                 date += 1
-            new_time_lines.append((time_lines[i], date, int(times[i % 7])))
+            final_time_lines.append((time_lines[i], date, int(times[i % 7])))
 
-        return new_time_lines
+        return final_time_lines
 
     @staticmethod
     def rotate(im):

@@ -212,46 +212,33 @@ def get_name(image):
     :param image: Image containing the name
     :return: detected name
     """
-    typical_words = ['Str', 'Wirzburg', 'Geb', 'Dat', 'Diagnose', 'Bayern', 'Gerbrunn', 'Augendruckkurve', 'Univ',
+    typical_words = ['Str', 'Wirzburg', 'Geb', 'Dat', 'Patum', 'rot', 'Diagnose', 'Bayern', 'Gerbrunn', 'Augendruckkurve', 'Univ',
                      'Augenklinik', 'Wirzbur', 'Hausmedikation', 'Mutter', 'Tel', 'Compl', 'Taiolan', 'Therapie',
                      'Rend',
                      'Wirz', 'Hausmedikation', 'Name', 'Diagnose', 'Datum', 'Augenkl', 'Wurzburg', 'Patum', 'Gob']
 
     name = pytesseract.image_to_string(image)
     name = re.sub(r"\n", " ", name)
-
     x = re.findall(r'[a-zA-Z]+', name)
-    y = ""
 
+    y = ""
     for s in x:
         if len(s) > 2:
             y += s + " "
 
     x = re.findall("[A-Z][a-z]+", y)
-    y = []
-    for s in x:
-        if not typical_words.__contains__(s):
-            y.append(s)
-    if len(y) > 1:
-        name = y[0] + ", " + y[1]
-    else:
-        name = "data"
+    y = [s for s in x if not typical_words.__contains__(s)]
 
-    return name
+    return y[0] + ", " + y[1] if len(y) > 0 else 'XX'
 
 
-def read_img(preprocessed_img):
-    """ Gets Date and Value information from an Image
+def __clean_date(date):
+    """ Cleanes up first date and adds
+    consecutive dates
 
-    :param preprocessed_img: Image to be read
-    :return: csv style String with the detected cross values and dates
+    :param date: First read date
+    :return: dict containing 6 dates starting with passed date
     """
-
-    date_area, graph_area = ImageUtils.get_date_graph_area_split(preprocessed_img)
-    date = __get_first_date(date_area)
-    crosses = []
-
-    # Cleans up read date
     if date is None:
         date = "0.0.00"
 
@@ -284,6 +271,21 @@ def read_img(preprocessed_img):
                 year = str(int(year) + 1)
         dates[i] = day + "." + month + "." + year
 
+    return dates
+
+
+def read_img(preprocessed_img):
+    """ Gets Date and Value information from an Image
+
+    :param preprocessed_img: Image to be read
+    :return: csv style String with the detected cross values and dates
+    """
+
+    date_area, graph_area = ImageUtils.get_date_graph_area_split(preprocessed_img)
+    date = __get_first_date(date_area)
+    dates = __clean_date(date)
+
+    crosses = []
     # Lines on Image that need to be checked for colors
     times_lines = []
     lines = ImageUtils.get_time_lines(preprocessed_img)
@@ -310,11 +312,10 @@ def read_img(preprocessed_img):
 
         if x_red is None and x_blue is not None:
             x_red = __get_any_cross(t, mask_red, x_blue)
-
-        if x_blue is None and x_red is not None:
+        elif x_blue is None and x_red is not None:
             # if there is red cross but no blue get any blue marks
             x_blue = __get_any_cross(t, mask_blue, x_red)
-        if x_blue is None and x_red is None:
+        elif x_blue is None and x_red is None:
             continue
 
         value_blue = get_value(x_blue[1])
