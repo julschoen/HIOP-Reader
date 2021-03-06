@@ -21,7 +21,7 @@ Currently, only MacOS is supported. The program can be used by running [TBD](). 
 
 ## Authors
 
-* Julian Schön (julianschoen@gmx.de)
+* Julian Schön ([Contact](hiopreader@gmail.com))
 
 ## License
 Published under [GNU General Public License](LICENSE)
