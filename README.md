@@ -16,9 +16,6 @@ Python 3.7.9 and all dependences listed in the [requirements.txt](requirements.t
 development Tesseract and Tensorflow need to be installed.
 Documentation of the program can be found [here](docs/_build/html/index.html).
 
-### Installation
-Currently, only MacOS is supported. The program can be used by running [TBD](). The user guide (German only) can be found [here](Benutzerhandbuch.pdf).
-
 ## Authors
 
 * Julian Schön ([Contact](mailto:hiopreader@gmail.com))
