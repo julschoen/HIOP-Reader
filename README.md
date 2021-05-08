@@ -1,5 +1,5 @@
 # HIOP-Reader
-A python based program developed for the University Clinic of  Würzburg to convert hand written intraocular pressure graphs
+A python based program developed for the University Clinic of  Würzburg to convert hand-written intraocular pressure graphs
 (Tagesdruckkurven) to csv. The program depends on the specific form used by German University Clinics.
 
 Best results can be achieved by scanning the entire image and ensuring that nothing is blocked or
